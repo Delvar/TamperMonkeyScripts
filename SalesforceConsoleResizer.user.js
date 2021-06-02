@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Salesforce Console Resizer
 // @namespace    https://github.com/Delvar/TamperMonkeyScripts/
-// @version      0.1
+// @version      0.2
 // @description  Make salesforce built in console app areas resizable .. quick hack.
 // @author       Morgan Gilroy
 // @match        https://*.lightning.force.com/lightning/*
@@ -10,6 +10,8 @@
 // ==/UserScript==
 
 (function() {
+    // https://github.com/Delvar/TamperMonkeyScripts/raw/main/SalesforceConsoleResizer.user.js
+
     'use strict';
     GM_addStyle('[flexipage-recordhomepinnedheaderleftsidebartwocoltemplatedesktop2_recordhomepinnedheaderleftsidebartwocoltemplatedesktop2].slds-region__pinned-left {overflow-y: auto; position: relative; resize: horizontal; min-width: 400px; max-width: 800px; width: 400px;}');
     GM_addStyle('[flexipage-recordhomepinnedheaderleftsidebartwocoltemplatedesktop2_recordhomepinnedheaderleftsidebartwocoltemplatedesktop2].main-container-wrapper {flex: auto}');
