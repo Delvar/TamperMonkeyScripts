@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Salesforce Console Resizer
 // @namespace    https://github.com/Delvar/TamperMonkeyScripts/
-// @version      0.2
+// @version      0.3
 // @description  Make salesforce built in console app areas resizable .. quick hack.
 // @author       Morgan Gilroy
 // @match        https://*.lightning.force.com/lightning/*
