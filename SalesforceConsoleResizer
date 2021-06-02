@@ -1,0 +1,17 @@
+// ==UserScript==
+// @name         Salesforce Console Resizer
+// @namespace    http://www.telappliant.com/
+// @version      0.1
+// @description  Make salesforce built in console app areas resizable .. quick hack.
+// @author       Morgan Gilroy
+// @match        https://*.lightning.force.com/lightning/*
+// @icon         https://www.google.com/s2/favicons?domain=force.com
+// @grant        GM_addStyle
+// ==/UserScript==
+
+(function() {
+    'use strict';
+    GM_addStyle('[flexipage-recordhomepinnedheaderleftsidebartwocoltemplatedesktop2_recordhomepinnedheaderleftsidebartwocoltemplatedesktop2].slds-region__pinned-left {overflow-y: auto; position: relative; resize: horizontal; min-width: 400px; max-width: 800px; width: 400px;}');
+    GM_addStyle('[flexipage-recordhomepinnedheaderleftsidebartwocoltemplatedesktop2_recordhomepinnedheaderleftsidebartwocoltemplatedesktop2].main-container-wrapper {flex: auto}');
+    GM_addStyle('div.tabContainer.oneConsoleTabContainer.slds-grid { flex: auto; width: 100% !important;}');
+})();
