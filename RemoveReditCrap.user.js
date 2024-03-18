@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Remove Reddit's promoted posts and other noise
 // @namespace    https://github.com/Delvar/TamperMonkeyScripts/
-// @version      0.5
+// @version      0.6
 // @description  Get rid of Reddit's "promoted" posts and other noise
 // @author       Lyle Hanson / Morgan
 // @match        https://www.reddit.com/*
