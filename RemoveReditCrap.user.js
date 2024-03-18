@@ -13,15 +13,14 @@
 
     function kill_ads() {
         let spans = Array.prototype.slice.call( document.getElementsByTagName( "span" ) ).filter((span) => span.textContent == "promoted");
-        spans.forEach((span) => {span.parentElement.parentElement.parentElement.parentElement.style = "display: none"});
+        spans.forEach((span) => {span.parentElement.parentElement.parentElement.parentElement.style.display="none"});
 
         spans = document.querySelectorAll( "span.promoted-label" );
-        spans.forEach((span) => {span.parentElement.parentElement.parentElement.parentElement.style = "display: none"});
+        spans.forEach((span) => {span.parentElement.parentElement.parentElement.parentElement.style.display="none"});
 
-        let adPostArray = Array.prototype.slice.call(document.getElementsByTagName('shreddit-ad-post'));
-        adPostArray.forEach((adPost) => {adPost.style = "display: none"});
-
-	document.getElementsByTagName("shreddit-dynamic-ad-link").forEach((span) => span.parentElement.parentElement.parentElement.parentElement.style = "display: none")
+        document.getElementsByTagName("shreddit-dynamic-ad-link").forEach((e) => { e.style.display = "none" } )
+        document.getElementsByTagName("shreddit-sidebar-ad").forEach((e) => { e.style.display = "none" } )
+        document.getElementsByTagName("shreddit-ad-post").forEach((e) => { e.style.display = "none" } )
     }
 
     kill_ads()
