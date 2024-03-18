@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         My Auto Close YouTube Ads
-// @namespace    https://invalid.invalid
+// @namespace    https://github.com/Delvar/TamperMonkeyScripts/
 // @version      1.0.0
 // @description  Close and/or Mute YouTube ads automatically!
 // @author       fuzetsu / Morgan
@@ -13,6 +13,7 @@
 // @grant        GM_deleteValue
 // @grant        GM_registerMenuCommand
 // @require      https://cdn.jsdelivr.net/gh/kufii/My-UserScripts@23586fd0a72b587a1786f7bb9088e807a5b53e79/libs/gm_config.js
+// https://github.com/Delvar/TamperMonkeyScripts/raw/main/MyAutoCloseYouTubeAds.user.js
 // ==/UserScript==
 /* globals GM_getValue GM_setValue GM_deleteValue GM_registerMenuCommand GM_config */
 /**
