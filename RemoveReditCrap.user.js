@@ -18,9 +18,9 @@
         spans = document.querySelectorAll( "span.promoted-label" );
         spans.forEach((span) => {span.parentElement.parentElement.parentElement.parentElement.style.display="none"});
 
-        document.getElementsByTagName("shreddit-dynamic-ad-link").forEach((e) => { e.style.display = "none" } )
-        document.getElementsByTagName("shreddit-sidebar-ad").forEach((e) => { e.style.display = "none" } )
-        document.getElementsByTagName("shreddit-ad-post").forEach((e) => { e.style.display = "none" } )
+        Array.from(document.getElementsByTagName("shreddit-dynamic-ad-link")).forEach((e) => { e.style.display = "none" } );
+        Array.from(document.getElementsByTagName("shreddit-sidebar-ad")).forEach((e) => { e.style.display = "none" } );
+        Array.from(document.getElementsByTagName("shreddit-ad-post")).forEach((e) => { e.style.display = "none" } );
     }
 
     kill_ads()
