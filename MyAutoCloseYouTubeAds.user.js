@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         My Auto Close YouTube Ads
 // @namespace    https://github.com/Delvar/TamperMonkeyScripts/
-// @version      1.0.0
+// @version      1.0.2
 // @description  Close and/or Mute YouTube ads automatically!
 // @author       fuzetsu / Morgan
 // @run-at       document-body
@@ -23,19 +23,17 @@
  */
 const CSS = {
     // the button used to skip an ad
-    //skipButton: '.videoAdUiSkipButton,.ytp-ad-skip-button',
-    skipButton: 'button.ytp-ad-skip-button-modern.ytp-button, button.ytp-ad-skip-button',
+    skipButton: '.videoAdUiSkipButton,.ytp-ad-skip-button,.ytp-ad-skip-button-modern,.ytp-skip-ad-button',
     // the area showing the countdown to the skip button showing
-    preSkipButton: '.videoAdUiPreSkipButton,.ytp-ad-preview-container',
+    preSkipButton: '.videoAdUiPreSkipButton,.ytp-ad-preview-container,.ytp-preview-ad',
     // little x that closes banner ads
-    bannerAd: '.close-padding.contains-svg,a.close-button,.ytp-ad-overlay-close-button',
+    closeBannerAd: '.close-padding.contains-svg,a.close-button,.ytp-ad-overlay-close-button',
     // button that toggle mute on the video
-    //muteButton: '.ytp-mute-button',
-    muteButton: 'button.ytp-mute-button',
+    muteButton: '.ytp-mute-button',
     // the slider bar handle that represents the current volume
     muteIndicator: '.ytp-volume-slider-handle',
     // container for ad on video
-    adArea: '.videoAdUi,.ytp-ad-player-overlay',
+    adArea: '.videoAdUi,.ytp-ad-player-overlay,.ytp-ad-player-overlay-layout',
     // container that shows ad length eg 3:23
     adLength: '.videoAdUiAttribution,.ytp-ad-duration-remaining',
     // container for header ad on the home page
@@ -411,9 +409,9 @@ function waitForAdArea() {
 };
 
 // Banner Ad
-function foundBannerAd( btn )
+function foundCloseBannerAd( btn )
 {
-    onRemove( btn, () => waitForBannerAd() );
+    onRemove( btn, () => waitForCloseBannerAd() );
     const ms = conf.secWaitBanner * 1000;
     util.log('Found banner ad, closing in ' + ms + 'ms');
     setTimeout(() => {
@@ -421,30 +419,30 @@ function foundBannerAd( btn )
     }, ms);
 }
 
-const observerForBannerAd = new MutationObserver( ( mutations, observer ) => {
+const observerForCloseBannerAd = new MutationObserver( ( mutations, observer ) => {
     for ( const mutation of mutations ) {
         for ( const added of mutation.addedNodes ) {
-            if ( added.nodeType === Node.ELEMENT_NODE && added.matches( CSS.bannerAd ) ) {
+            if ( added.nodeType === Node.ELEMENT_NODE && added.matches( CSS.closeBannerAd ) ) {
                 observer.disconnect();
-                foundBannerAd( added );
+                foundCloseBannerAd( added );
             }
         }
     }
 });
 
-function waitForBannerAd() {
+function waitForCloseBannerAd() {
     util.log( 'Waiting for banner ad' );
 
-    var elements = document.querySelectorAll( CSS.bannerAd );
+    var elements = document.querySelectorAll( CSS.closeBannerAd );
     for ( const element of elements ) {
-        if ( element.nodeType === Node.ELEMENT_NODE && element.matches( CSS.bannerAd ) ) {
+        if ( element.nodeType === Node.ELEMENT_NODE && element.matches( CSS.closeBannerAd ) ) {
             util.log( 'Already present' );
             foundBannerAd( element );
             return;
         }
     }
-    observerForBannerAd.disconnect();
-    observerForBannerAd.observe( document.body, {
+    observerForCloseBannerAd.disconnect();
+    observerForCloseBannerAd.observe( document.body, {
         childList: true,
         subtree: true
     });
@@ -485,7 +483,7 @@ function waitForAds() {
 function stopWaitingForAds() {
     observerForSkipButton.disconnect();
     observerForAdArea.disconnect();
-    observerForBannerAd.disconnect();
+    observerForCloseBannerAd.disconnect();
 }
 
 util.log('Started');
@@ -585,4 +583,3 @@ if (window.self === window.top) {
 }
 
 GM_registerMenuCommand('My Auto Close Youtube Ads - Manage Settings', config.setup)
-
