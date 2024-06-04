@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         My Auto Close YouTube Ads
 // @namespace    https://github.com/Delvar/TamperMonkeyScripts/
-// @version      1.0.3
+// @version      1.0.4
 // @description  Close and/or Mute YouTube ads automatically!
 // @author       fuzetsu / Morgan
 // @run-at       document-body
@@ -477,7 +477,7 @@ function waitForAds() {
     DONT_SKIP = false;
     waitForSkipButton();
     waitForAdArea();
-    waitForBannerAd();
+    waitForCloseBannerAd();
 }
 
 function stopWaitingForAds() {
