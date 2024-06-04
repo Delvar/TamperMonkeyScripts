@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         My Auto Close YouTube Ads
 // @namespace    https://github.com/Delvar/TamperMonkeyScripts/
-// @version      1.0.2
+// @version      1.0.3
 // @description  Close and/or Mute YouTube ads automatically!
 // @author       fuzetsu / Morgan
 // @run-at       document-body
@@ -37,7 +37,7 @@ const CSS = {
     // container that shows ad length eg 3:23
     adLength: '.videoAdUiAttribution,.ytp-ad-duration-remaining',
     // container for header ad on the home page
-    homeAdContainer: '#masthead-ad,#big-yoodle,ytd-ad-slot-renderer.style-scope.ytd-rich-item-renderer,ytd-in-feed-ad-layout-renderer.style-scope.ytd-ad-slot-renderer,div.style-scope.yt-mealbar-promo-renderer'
+    homeAdContainer: '#masthead-ad,#big-yoodle,.ytd-ad-slot-renderer,ytd-ad-slot-renderer.style-scope.ytd-rich-item-renderer,ytd-in-feed-ad-layout-renderer.style-scope.ytd-ad-slot-renderer,div.style-scope.yt-mealbar-promo-renderer'
 }
 
 // From: https://stackoverflow.com/questions/20156453/how-to-detect-element-being-added-removed-from-dom-element
